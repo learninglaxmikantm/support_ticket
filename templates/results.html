@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ticket Analysis Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background: #343a40;
+            color: white;
+        }
+
+        .high {
+            background-color: #f8d7da;
+            color: #721c24;
+            font-weight: bold;
+        }
+
+        .moderate {
+            background-color: #fff3cd;
+            color: #856404;
+            font-weight: bold;
+        }
+
+        .low {
+            background-color: #d4edda;
+            color: #155724;
+            font-weight: bold;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Support Ticket Priority Results</h2>
+
+<table>
+    <tr>
+        <th>Emp ID</th>
+        <th>Department</th>
+        <th>Ticket Date</th>
+        <th>Category</th>
+        <th>Description</th>
+        <th>Priority</th>
+    </tr>
+
+    {% for row in results %}
+    <tr class="{{ row.priority | lower }}">
+        <td>{{ row.emp_id }}</td>
+        <td>{{ row.department }}</td>
+        <td>{{ row.ticket_date }}</td>
+        <td>{{ row.category }}</td>
+        <td>{{ row.ticket_text }}</td>
+        <td>{{ row.priority }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<a href="/">← Upload another file</a>
+
+</body>
+</html>
